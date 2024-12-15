@@ -134,6 +134,12 @@ class color_label_e:
     kColorBlue = 5
     kColorYellow = 6
 
+class apriltag_vision_mode_e:
+    kVisionModeFamily16H5 = 0
+    kVisionModeFamily25H9 = 1
+    kVisionModeFamily36H11 = 2
+
+
 # sengo2 vision
 class sengo2_vision_e:
     kVisionColor = 1
@@ -564,9 +570,9 @@ class SentryUartMethod:
             elif err == SENTRY_PROTOC_TIMEOUT:
                 try_time += 1
                 if try_time > 3:
-                    return SENTRY_READ_TIMEOUT
+                    return (SENTRY_READ_TIMEOUT,0)
             else:
-                return SENTRY_FAIL
+                return (SENTRY_FAIL, 0)
 
     def Read(self, vision_type, vision_state):
 
@@ -882,7 +888,7 @@ class SentryBase:
         _mode = vision_config_reg_value&0x0f
         if _mode != mode:
             vision_config_reg_value &= 0xf0
-            vision_config_reg_value |= mode & 0x0f
+            vision_config_reg_value |= mode
             
             err = self.__stream.Set(kRegVisionConfig2, vision_config_reg_value)
         return err;
