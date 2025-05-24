@@ -139,9 +139,13 @@ class apriltag_vision_mode_e:
     kVisionModeFamily25H9 = 1
     kVisionModeFamily36H11 = 2
 
+class _sengo2_vision_e_out:
+
+    kVision20Classes = 8
+    kVisionMotionDetect = 11
 
 # sengo2 vision
-class sengo2_vision_e:
+class sengo2_vision_e(_sengo2_vision_e_out):
     kVisionColor = 1
     kVisionBlob = 2
     kVisionAprilTag = 3
@@ -149,9 +153,9 @@ class sengo2_vision_e:
     kVisionLearning = 5
     kVisionCard = 6
     kVisionFace = 7
-    kVision20Classes = 8
+    kVision20Class = 8
     kVisionQrCode = 9
-    kVisionMotionDetect = 11
+    kVisionMotion = 11
     kVisionMaxType = 12
 
 # Sentry card label
